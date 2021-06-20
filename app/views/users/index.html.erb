@@ -1,0 +1,35 @@
+All User
+<%= @users.size  %>
+<%- @users.each do |user|  %>
+    <hr>
+    <b>ID:</b>
+<%= link_to user.id, user_path(user)%>
+<br>
+<b>Email:</b>
+<%= user.email %>
+<br>
+<b>Confirmation:</b>
+<%= user.confirmed? %>
+<br>
+
+<b><%= 'sign_in_count'.humanize %></b>
+<%= user.sign_in_count %>
+<br>
+<b><%= 'current_sign_in_at'.humanize %></b>
+<%= user.current_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b><%= 'last_sign_in_at'.humanize %></b>
+<%= user.last_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b><%= 'current_sign_in_ip'.humanize %></b>
+<%= user.current_sign_in_ip %>
+<br>
+<b><%= 'last_sign_in_ip'.humanize %></b>
+<%= user.last_sign_in_ip %>
+<br>
+<b><%= 'locked_at'.humanize %></b>
+<%= (user.locked_at)? user.locked_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p"):'---' %>
+<br>
+<%= link_to ban_status(user), ban_user_path(user),method: :patch %>
+<%= link_to "Delete", user, method: :DELETE, data: {confirm: "Are You Sure?"} %>
+<% end %>
