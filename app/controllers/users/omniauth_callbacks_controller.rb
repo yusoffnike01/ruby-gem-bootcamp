@@ -9,6 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     handle_auth('Github')
   end
+
+  def facebook
+    handle_auth('Facebook')
+  end
     def handle_auth(kind)
      
         # You need to implement the method below in your model (e.g. app/models/user.rb)
