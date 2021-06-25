@@ -30,6 +30,20 @@ All User
 <b><%= 'locked_at'.humanize %></b>
 <%= (user.locked_at)? user.locked_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p"):'---' %>
 <br>
+<b><%= 'provider'.humanize %></b>
+<%= user.provider %>
+<br>
+<b><%= 'uid'.humanize %></b>
+<%= user.uid %>
+<br>
+<b><%= 'name'.humanize %></b>
+<%= user.name %>
+<br>
+<b><%= 'image'.humanize %></b>
+<% if user.image.present? %>
+<%=  image_tag user.image, size: "50x50" %>
+<% end %>
+<br>
 <%= link_to ban_status(user), ban_user_path(user),method: :patch %>
 <%= link_to "Delete", user, method: :DELETE, data: {confirm: "Are You Sure?"} %>
 <% end %>
