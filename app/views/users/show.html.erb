@@ -1,0 +1,29 @@
+<b>ID:</b>
+<%= @users.id %>
+<br>
+<b>Email:</b>
+<%= @users.email %>
+<br>
+<b>Confirmation:</b>
+<%= @users.confirmed? %>
+<br>
+<b>Sign In Count:</b>
+<%= @users.sign_in_count %>
+<br>
+<b>Current Sign  In :</b>
+<%= @users.current_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b>Last Sign In :</b>
+<%= @users.last_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b>Current Sign In IP :</b>
+<%= @users.current_sign_in_ip %>
+<br>
+<b>Last Sign In IP :</b>
+<%= @users.last_sign_in_ip %>
+<br>
+<b>Locked At :</b>
+<%= (@users.locked_at)? @users.locked_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") : '----' %>
+<br>
+<b>Provider: </b>
+<%= (@users.provider)? @users.provider: '----' %>

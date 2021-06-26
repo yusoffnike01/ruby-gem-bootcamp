@@ -3,10 +3,8 @@ class UsersController < ApplicationController
        @users=User.all.order(:created_at)
     end
 
-    def show
-        puts "ssss"
-        @users=User.find(params[:id])
-      
+    def show 
+        @users = User.find(params[:id])
     end
 
     def ban 
