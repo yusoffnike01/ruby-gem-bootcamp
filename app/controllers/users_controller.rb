@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_admin, only: [:edit, :update, :ban, :destroy]
     def index
        @users=User.all.order(:created_at)
     end
@@ -22,6 +23,18 @@ class UsersController < ApplicationController
          
     end
 
+    def resend_confirmation_instructions
+        @user = User.find(params[:id])
+        unless @user.confirmed?
+            @user.resend_confirmation_instructions
+            redirect_to @user, notice: "Confirmation Instruction were  resent"
+        else
+            redirect_to @user, alert: "User already confirmed.."
+        end
+    
+       
+    end
+
     def ban 
         puts "saya"
         @user = User.find(params[:id])
@@ -33,18 +46,17 @@ class UsersController < ApplicationController
         redirect_to @user, notice: "User ban status updated"
     end
 
-    def destroy
-        puts "masuk x"
-        @users = User.find(params[:id])
-        @users.destroy
-        redirect_to users_path, notice: "Successfully Deleted User"
-    end
-
-
+ 
     private
 
     def user_params
     params.require(:user).permit(*User::ROLES)
+    end
+
+    def require_admin
+        unless current_user.admin?
+            redirect_to root_path, alert: "You are not authorized to perform this action "
+        end
     end
 
   

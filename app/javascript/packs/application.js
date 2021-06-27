@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 //= require jquery
 //= require jquery_ujs
-
+//= require jquery2
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -14,7 +14,12 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
 require("stylesheets/application.scss")
-import "@fortawesome/fontawesome-free/css/all";
+
+import "@fortawesome/fontawesome-free/css/all"
+global.toastr = require("toastr")
+
+import "../stylesheets/application"

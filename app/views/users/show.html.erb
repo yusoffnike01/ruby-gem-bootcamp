@@ -1,3 +1,5 @@
+<div class="card">
+<div class="card-body">
 <b>ID:</b>
 <%= @users.id %>
 <br>
@@ -27,3 +29,20 @@
 <br>
 <b>Provider: </b>
 <%= (@users.provider)? @users.provider: '----' %>
+<br>
+<b>Uid:</b>
+<%= @users.uid %>
+<br>
+<b>Name:</b>
+<%= @users.name %>
+<br>
+<b>Roles:</b>
+<%= @users.active_roles.join(",") %><br>
+<%= link_to "Edit roles", edit_user_path(@users), class:"btn btn-sm btn-warning"  %>
+<%= link_to ban_status(@users), ban_user_path(@users),method: :patch, class:"btn btn-sm btn-danger"  %>
+<%= link_to "Delete",@users, data:{confirm: "Are you sure?"}, :method => :delete, class:"btn btn-sm btn-danger" %><br>
+</div>
+<div class="card-footer">
+<%= link_to "All User", users_path(@users) %>
+</div>
+</div>

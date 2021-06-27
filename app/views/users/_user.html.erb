@@ -1,0 +1,53 @@
+<%- @users.each do |user|  -%>
+    <hr>
+    <b>ID:</b>
+<%= link_to user.id, user_path(user)%>
+<br>
+<b>Email:</b>
+<%= user.email %>
+<br>
+<b>Confirmation:</b>
+<%= user.confirmed? %>
+<br>
+
+<b><%= 'sign_in_count'.humanize %></b>
+<%= user.sign_in_count %>
+<br>
+<b><%= 'current_sign_in_at'.humanize %></b>
+<%= user.current_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b><%= 'last_sign_in_at'.humanize %></b>
+<%= user.last_sign_in_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p") %>
+<br>
+<b><%= 'current_sign_in_ip'.humanize %></b>
+<%= user.current_sign_in_ip %>
+<br>
+<b><%= 'last_sign_in_ip'.humanize %></b>
+<%= user.last_sign_in_ip %>
+<br>
+<b><%= 'locked_at'.humanize %></b>
+<%= (user.locked_at)? user.locked_at.in_time_zone("Asia/Kuala_Lumpur").strftime("%Y-%m-%e %l:%M:%S %p"):'---' %>
+<br>
+<b><%= 'provider'.humanize %></b>
+<%= user.provider %>
+<br>
+<b><%= 'uid'.humanize %></b>
+<%= user.uid %>
+<br>
+<b><%= 'name'.humanize %></b>
+<%= user.name %>
+<br>
+<b><%= 'image'.humanize %></b>
+<% if user.image.present? %>
+<%=  image_tag user.image, size: "50x50" %>
+<% end %>
+<br>
+<b><%= 'role'.humanize %></b>
+<%= user.active_roles.join(",") %>
+<br>
+
+<%= link_to ban_status(user), ban_user_path(user),method: :patch ,class:"btn btn-sm btn-danger" %>
+<%= link_to "Edit roles", edit_user_path(user),class:"btn btn-sm btn-warning"  %>
+<%= link_to "Delete",user, data:{confirm: "Are you sure?"}, :method => :delete, class:"btn btn-sm btn-danger" %>
+
+<% end %>

@@ -1,1 +1,16 @@
 @import "bootstrap/scss/bootstrap";
+
+html{
+ margin:0
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    min-height:100vh;
+}
+
+footer{
+    margin-top: auto;
+}

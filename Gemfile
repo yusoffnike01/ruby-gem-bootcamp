@@ -59,4 +59,10 @@ gem 'omniauth',                   '1.9.1'     # downgrade from '2.0.4'
 gem 'omniauth-google-oauth2',     '0.8.2'     # downgrade from '1.0.0'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
+gem 'jquery-rails'
+gem "sass-rails", ">= 6"
+gem 'devise_invitable', '~> 2.0.0'
+
+
+
 
